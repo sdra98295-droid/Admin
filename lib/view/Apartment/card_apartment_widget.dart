@@ -18,7 +18,7 @@ class CardApartmentWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
-        height: 380,
+        height:500,
         decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -70,7 +70,12 @@ class CardApartmentWidget extends StatelessWidget {
                     Icon(Icons.image_not_supported,color: Colors.grey)
               
                   ]else...[
-                    Image.network(BuildImageUrl().buildImageUrl(apartment.contractImage!),height:100,width:40,fit: BoxFit.fill,),
+                     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Image Apartnent Contract : "),
+                        Image.network(BuildImageUrl().buildImageUrl(apartment.contractImage!),height:150,width:150,fit: BoxFit.fill,),
+                      ],
+                    ),
                   ],
                   SizedBox(
                     height: 10,
