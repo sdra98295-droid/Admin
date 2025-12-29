@@ -15,7 +15,8 @@ class BrowseUsersService {
       for (int i = 0; i < Listuser.length; i++) {
         userList.add(UsersBrowseModel.fromJson(Listuser[i]));
       }
-      print(Listuser[Listuser.length-1]);
+     // print(Listuser[Listuser.length-1]);
+
       return userList;
     } else {
       throw Exception(response.statusCode);

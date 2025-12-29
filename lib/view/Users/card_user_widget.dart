@@ -33,19 +33,45 @@ class _CardUserWidgetState extends State<CardUserWidget> {
             child: ListView(
               children: [
                 Text("ID:${widget.user.id} "),
-                Text("First Name : ${widget.user.first_name}"),
-                Text("Last Name : ${widget.user.last_name}"),
-                Text("Mobil :${widget.user.mobile} "),
-                Text("Birth Date : ${widget.user.birth_date}"),
+                Row(
+                  children: [
+                    Icon(Icons.person,size:16,color: Colors.grey,),
+                    Text("First Name : ${widget.user.first_name}"),
+                  ],
+                ),
+
+                Row(children: [
+                  Icon(Icons.person,size:16,color: Colors.grey,),
+                  Text("Last Name : ${widget.user.last_name}"),
+                ],),
+                Row(children: [
+                  Icon(Icons.phone,size:16,color: Colors.grey,),
+                  Text("Mobil :${widget.user.mobile} "),
+                ],),
+               Row(children: [
+                 Icon(Icons.calendar_month,size:16,color: Colors.grey,),
+                 Text("Birth Date : ${widget.user.birth_date}"),
+               ],
+               ),
                 Text("Created At :${widget.user.created_at}"),
                 Text("Update At : ${widget.user.updated_at}"),
                 SizedBox(height:10,),
                 Row(
                   mainAxisAlignment:  MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.network(BuildImageUrl().buildImageUrl(widget.user.image!),height: 100,width: 100,fit: BoxFit.fill,),
-                    Image.network(BuildImageUrl().buildImageUrl(widget.user.id_image!),height: 100,width: 100,fit: BoxFit.fill,),
-                  ],
+                    if(widget.user.image==null)...[
+                      Icon(Icons.image_not_supported,color: Colors.grey)
+
+                    ]else...[
+                      Image.network(BuildImageUrl().buildImageUrl(widget.user.image!),height: 100,width: 100,fit: BoxFit.fill,),
+                    ],
+                    if(widget.user.id_image==null)...[
+                      Icon(Icons.image_not_supported,color: Colors.grey,)
+
+                    ]else...[
+                      Image.network(BuildImageUrl().buildImageUrl(widget.user.id_image!),height: 100,width: 100,fit: BoxFit.fill,),
+                    ],
+                   ],
                 ),
 
                 SizedBox(height:30,),

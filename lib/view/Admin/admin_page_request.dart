@@ -1,7 +1,7 @@
+import 'package:admin/view/Apartment/ApartmentRequestPage.dart';
+import 'package:admin/view/Users/UserRequestsPage.dart';
 import 'package:flutter/material.dart';
-import 'ApartmentRequestPage.dart';
-import 'UserRequestsPage.dart';
-class AdminScreen extends StatelessWidget {
+ class AdminScreen extends StatelessWidget {
   const AdminScreen({super.key});
 
   @override

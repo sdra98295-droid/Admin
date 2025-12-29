@@ -1,4 +1,4 @@
-import 'package:admin/view/admin_screen.dart';
+import 'package:admin/view/Admin/admin_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

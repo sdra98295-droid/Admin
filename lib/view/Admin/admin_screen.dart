@@ -1,7 +1,7 @@
 import 'package:admin/helpers/errors.dart';
+import 'package:admin/services/log_in_admin_serve.dart';
 import 'package:flutter/material.dart';
-import '../services/log_in_admin_serve.dart';
-import 'admin_page_request.dart';
+ import 'admin_page_request.dart';
 class Admin extends StatefulWidget {
   Admin({super.key});
   @override
