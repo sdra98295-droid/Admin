@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../helpers/api_config.dart';
 import '../models/users_browse_model.dart';
 import 'package:http/http.dart'as http;
 class BrowseUsersService {
@@ -6,7 +7,7 @@ class BrowseUsersService {
   Future<List<UsersBrowseModel>> getAllusers(
       {required int isApproved}) async {
     http.Response response = await http.get(
-        Uri.parse("http://127.0.0.1:8000/api/browse?is_approved=$isApproved"));
+        Uri.parse("${ApiConfig().baseUrl}/api/browse?is_approved=$isApproved"));
     //print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic>user = jsonDecode(response.body);
@@ -25,7 +26,7 @@ class BrowseUsersService {
 
   Future<void> acceptUser(int userId) async {
     final response = await http.patch(
-      Uri.parse("http://127.0.0.1:8000/api/accept/$userId"),
+      Uri.parse("${ApiConfig().baseUrl}/api/accept/$userId"),
     );
 
     if (response.statusCode == 200) {
@@ -39,7 +40,7 @@ class BrowseUsersService {
 
   Future<void> rejectUser(int userId) async {
     http.Response response = await http.patch(
-        Uri.parse("http://127.0.0.1:8000/api/reject/$userId"));
+        Uri.parse("${ApiConfig().baseUrl}/api/reject/$userId"));
     if (response.statusCode == 200) {
       final resposeJson = jsonDecode(response.body);
       print(resposeJson["message"]);

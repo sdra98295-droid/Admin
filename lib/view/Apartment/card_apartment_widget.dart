@@ -80,7 +80,7 @@ class CardApartmentWidget extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  /// 🔹 Buttons
+                  // Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

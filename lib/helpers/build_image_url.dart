@@ -1,5 +1,7 @@
+import 'package:admin/helpers/api_config.dart';
+
 class BuildImageUrl {
   String buildImageUrl(String path){
-    return "http://127.0.0.1:8000/storage/$path";
+    return "${ApiConfig().baseUrl}/storage/$path";
   }
 }

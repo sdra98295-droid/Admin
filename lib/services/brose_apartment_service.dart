@@ -1,22 +1,20 @@
 import 'dart:convert';
+import '../helpers/api_config.dart';
 import '../models/apartment_browse_model.dart';
-import '../models/users_browse_model.dart';
-import 'package:http/http.dart'as http;
+ import 'package:http/http.dart'as http;
 class BrowseApartmentService {
 
   Future<List<ApartmentBrowseModel>> getAllApartment(
       {required int status}) async {
     http.Response response = await http.get(
-        Uri.parse("http://127.0.0.1:8000/api/apartment?status=$status"));
-   // print(response.body);
-    if (response.statusCode == 200) {
+        Uri.parse("${ApiConfig().baseUrl}/api/apartment?status=$status"));
+     if (response.statusCode == 200) {
       Map<String, dynamic>apartment = jsonDecode(response.body);
       List<dynamic> artmentsJson = apartment["data"];
       List<ApartmentBrowseModel>apartmentList = [];
       for (int i = 0; i < artmentsJson.length; i++) {
         apartmentList.add(ApartmentBrowseModel.fromJson(artmentsJson[i]));
       }
-        //print(apartmentList);
         return apartmentList;
     } else {
       throw Exception(response.statusCode);
@@ -25,7 +23,7 @@ class BrowseApartmentService {
 
   Future<void> acceptApartment(int apartmentId) async {
     final response = await http.patch(
-      Uri.parse("http://127.0.0.1:8000/api/ok/$apartmentId"),
+      Uri.parse("${ApiConfig().baseUrl}/api/ok/$apartmentId"),
     );
 
     if (response.statusCode == 200) {
@@ -40,7 +38,7 @@ class BrowseApartmentService {
 
   Future<void> rejectApartment(int apartmentId) async {
     http.Response response = await http.patch(
-        Uri.parse("http://127.0.0.1:8000/api/no/$apartmentId"));
+        Uri.parse("${ApiConfig().baseUrl}/api/no/$apartmentId"));
     if (response.statusCode == 200) {
       final resposeJson = jsonDecode(response.body);
       print(resposeJson["message"]);
