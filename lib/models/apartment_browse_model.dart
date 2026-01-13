@@ -43,7 +43,7 @@ class ApartmentBrowseModel {
       rooms: json["rooms"] ?? 0,
       price: json["price"],
       contractImage: json["contract"]??null,
-      country: json["country"]?"",
+      country: json["country"],
       city: json["city"],
       description: json["description"] ?? "",
        avaregRate: json["average_rating"] ?? 0,
